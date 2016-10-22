@@ -154,7 +154,7 @@ void Particles::computeNewPositions(sf::Time const& dtime)
     sf::RectangleShape square(sf::Vector2f(getBuffersSize().x, getBuffersSize().y));
     sf::Vector2f bufferSize = sf::Vector2f(_buffersSize.x, _buffersSize.y);
     float dt = 30.f * dtime.asSeconds();
-/**/
+
     _updateVelocityShader.setParameter("positions", _positions[_currentBufferIndex].getTexture());
     _updateVelocityShader.setParameter("oldVelocities", _velocities[_currentBufferIndex].getTexture());
     _updateVelocityShader.setParameter("bufferSize", bufferSize);

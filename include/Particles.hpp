@@ -13,7 +13,10 @@
 
 #include "Camera.hpp"
 
-class Particles// : public sf::Drawable
+
+/* Class for handling particles that can be moved with the mouse.
+ * Stores the particles' positions and velocities on a texture in GPU memory */
+class Particles
 {
     public:
         Particles(std::string const& image);
@@ -22,8 +25,10 @@ class Particles// : public sf::Drawable
         unsigned int getNbParticles() const;
         sf::Vector2u const& getBuffersSize() const;
 
+        /* Centers particles with zero initial speed */
         void initialize();
 
+        /* Activation and movement of the magnet attracting the particles */
         void setMagnetState (bool activation);
         void setMagnetPosition(sf::Vector2f const& position);
 
@@ -42,7 +47,7 @@ class Particles// : public sf::Drawable
 
         int _currentBufferIndex; //0 or 1 alternatively
         std::array<sf::RenderTexture, 2> _positions;
-        std::array<sf::RenderTexture, 2> _velocities;
+        std::array<sf::RenderTexture, 3> _velocities;
 
         sf::Shader _computeInitialPositionsShader;
         sf::Shader _computeInitialVelocitiesShader;
